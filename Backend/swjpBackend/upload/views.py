@@ -14,6 +14,7 @@ def upload_json(request):
     try:
         #loading and parsing json
         data = json.load(file)
+        runes = data["runes"]
 
         #need to insert processing logic here
 
