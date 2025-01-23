@@ -2,6 +2,7 @@ from django.shortcuts import render
 import json
 from rest_framework.decorators import api_view
 from rest_framework.decorators import Response
+from process_runes import calculate_efficiency
 
 @api_view(['POST'])
 def upload_json(request):
@@ -16,7 +17,7 @@ def upload_json(request):
         data = json.load(file)
         runes = data["runes"]
 
-        #need to insert processing logic here
+        rune_efficiencies = [calculate_efficiency(rune) for rune in runes]
 
         return Response({'message': 'File uploaded successfully'})
     except json.JSONDecodeError:
