@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import RuneChart from "./RuneChart";
 
 const UploadForm = () => {
   const [file, setFile] = useState(null);
@@ -47,17 +48,10 @@ const UploadForm = () => {
       {error && <p style={{ color: "red" }}>{error}</p>}
 
       {runeData && (
-        <div>
-          <h2>Sorted Runes</h2>
-          <ul>
-            {runeData.map((rune) => (
-              <li key={rune.rune_id}>
-                Rune ID: {rune.rune_id}, Current Efficiency: {rune.current_efficiency}%,
-                Max Efficiency: {rune.max_efficiency}%
-              </li>
-            ))}
-          </ul>
-        </div>
+        <>
+          <h2>Rune Efficiency Graph</h2>
+          <RuneChart runeData={runeData} />
+        </>
       )}
     </div>
   );
