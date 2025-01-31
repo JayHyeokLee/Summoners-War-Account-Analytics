@@ -21,8 +21,12 @@ def calculate_efficiency(rune):
 
     #if rune["class"] not in mapping["rune"]["effectTypes"]["main"][main_stat]["max"]:
     #    raise KeyError(f"Rune class {rune['class']} not found in max values")
-    
-    max_main = mapping["rune"]["mainstat"][main_stat]["max"][rune["class"]]
+    if rune["class"] > 10:
+        rune_class = rune["class"] - 10
+    else:
+        rune_class = rune["class"]
+
+    max_main = mapping["rune"]["mainstat"][main_stat]["max"][rune_class]
     ratio += main_value / max_main
 
     # Sub stat efficiency
