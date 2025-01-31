@@ -3,11 +3,25 @@ from .mapping import mapping
 def calculate_efficiency(rune):
     #calculate current and maximum rune efficiency
 
+    #debugging
+    #print("Mapping Data:", mapping)  
+    #print("Main Stat Key:", rune["pri_eff"][0])  
+    #print("Rune Class:", rune["class"])  
+    #print("Type of mapping:", type(mapping))
+
     ratio = 0.0
 
-     # Main stat efficiency
+    # Main stat efficiency
     main_stat = rune["pri_eff"][0]
     main_value = rune["pri_eff"][1]
+
+    #Debug Steps
+    #if main_stat not in mapping["rune"]["effectTypes"]["main"]:
+    #    raise KeyError(f"Main stat {main_stat} not found in mapping")
+
+    #if rune["class"] not in mapping["rune"]["effectTypes"]["main"][main_stat]["max"]:
+    #    raise KeyError(f"Rune class {rune['class']} not found in max values")
+    
     max_main = mapping["rune"]["effectTypes"]["main"][main_stat]["max"][rune["class"]]
     ratio += main_value / max_main
 
