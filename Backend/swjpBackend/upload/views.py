@@ -19,7 +19,14 @@ def upload_json(request):
 
         rune_efficiencies = [calculate_efficiency(rune) for rune in runes]
 
-        return Response({'message': 'File uploaded successfully'})
+        #print("done processing: ", rune_efficiencies)
+
+        return Response(rune_efficiencies, status=200)
+
     except json.JSONDecodeError:
         return Response({'error': 'Invalid JSON file'}, status=400)
+    
+    except Exception as e:
+        print(f"Error processing file: {str(e)}")
+        return Response({"error": str(e)}, status=500)
 

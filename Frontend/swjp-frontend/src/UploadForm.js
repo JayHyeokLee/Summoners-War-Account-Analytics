@@ -25,13 +25,23 @@ const UploadForm = () => {
       setLoading(true);
       setError(null);
 
+      console.log("Uploading file:", file.name);
+
       // Replace with actual URL later
       const response = await axios.post("http://127.0.0.1:8000/api/upload/", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      setRuneData(response.data);
+      console.log("Response received:", response);
+
+      if (response.status === 200 && response.data.length > 0) {
+        setRuneData(response.data);  
+      } else {
+        throw new Error("Invalid response from server.");
+      }
+
     } catch (err) {
+      console.error("Upload failed:", err.response?.data || err.message);
       setError("Failed to upload file. Please try again.");
     } finally {
       setLoading(false);
