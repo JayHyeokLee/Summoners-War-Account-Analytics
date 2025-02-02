@@ -11,7 +11,6 @@ const RuneChart = ({ runeData }) => {
   // Extract labels and efficiency values
   const labels = runeData.map((rune, index) => `Rune ${index + 1}`); // Use index to avoid long IDs
   const currentEfficiencies = runeData.map((rune) => rune.current_efficiency);
-  const maxEfficiencies = runeData.map((rune) => rune.max_efficiency);
 
   // Chart.js configuration
   const data = {
@@ -26,15 +25,6 @@ const RuneChart = ({ runeData }) => {
         borderWidth: 2,
         fill: true,
       },
-      {
-        label: "Max Efficiency (%)",
-        data: maxEfficiencies,
-        borderColor: "rgba(255, 99, 132, 1)", // Red line
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        pointBackgroundColor: "rgba(255, 99, 132, 1)",
-        borderWidth: 2,
-        fill: true,
-      },
     ],
   };
 
@@ -45,7 +35,7 @@ const RuneChart = ({ runeData }) => {
       title: { display: true, text: "Rune Efficiency Trends" },
     },
     scales: {
-      y: { beginAtZero: true, max: 100 },
+      y: { beginAtZero: true, max: 150 },
     },
   };
 
