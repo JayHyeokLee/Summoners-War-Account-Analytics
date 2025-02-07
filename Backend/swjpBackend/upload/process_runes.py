@@ -51,6 +51,6 @@ def calculate_efficiency(rune):
 
     return {
         "rune_id": rune["rune_id"],
-        "rune_set": rune["sets"],
+        "rune_set": rune["set_id"],
         "current_efficiency": round(current_efficiency, 2),
     }
