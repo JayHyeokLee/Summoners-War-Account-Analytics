@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Sidebar, SidebarItem } from "./components/Sidebar";
 import { UploadForm } from "./components/UploadForm";
 import { Moon, Sun } from "lucide-react";
-import logo from "./assets/logo.png"; // Add your logo here
+import logo from "./assets/logo.png"; // placeholder for logo
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -36,7 +36,7 @@ const App = () => {
           </div>
         </div>
         
-        {/* Future content goes here */}
+        {/* For future features */}
       </div>
     </div>
   );
