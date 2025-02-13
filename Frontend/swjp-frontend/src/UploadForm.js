@@ -68,7 +68,7 @@ const UploadForm = () => {
 
       // Extract unique set IDs from the runes
       const uniqueSets = [...new Set(data.map(rune => rune.rune_set))];
-      console.log("Unique Sets Found:", uniqueSets);  // Debugging
+      //console.log("Unique Sets Found:", uniqueSets);  // Debugging
       setRuneSets(uniqueSets);
     } catch (err) {
       console.error("Upload failed:", err.response?.data || err.message);
