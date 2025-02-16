@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Sidebar from "./components/sidebar";
 import UploadForm from "./components/UploadForm";
 import { Moon, Sun } from "lucide-react";
-import logo from "./assets/logo.png"; // placeholder for logo
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -10,9 +9,7 @@ const App = () => {
   return (
     <div className="landing">
       <div className="sidenav">
-        <Sidebar>
-        </Sidebar>
-
+        <Sidebar></Sidebar>
       </div>
 
       {/* Main Content */}

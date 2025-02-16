@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import RuneChart from "../RuneChart";
+import RuneChart from "./RuneChart";
 
 const UploadForm = () => {
   const [file, setFile] = useState(null);
