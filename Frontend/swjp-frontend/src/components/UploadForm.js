@@ -85,7 +85,7 @@ const UploadForm = () => {
 
   return (
     <div>
-      <h1>Upload Rune Data</h1>
+      <h2>Upload Rune Data</h2>
       <input type="file" accept=".json" onChange={handleFileChange} />
       <button onClick={handleUpload}>Upload</button>
 
