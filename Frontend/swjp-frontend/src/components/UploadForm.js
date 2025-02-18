@@ -108,7 +108,6 @@ const UploadForm = () => {
 
       {filteredRunes.length > 0 && (
         <>
-          <h2>Rune Efficiency Graph</h2>
           <RuneChart runeData={filteredRunes} />
         </>
       )}
