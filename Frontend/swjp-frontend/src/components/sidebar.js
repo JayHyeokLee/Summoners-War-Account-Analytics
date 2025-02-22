@@ -1,19 +1,16 @@
 import React from "react";
-import "./sidebar.css";
 import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
+import "./Sidebar.css";
 
 export const Sidebar = () => {
-  return(
-    <div className="sidenav">
-        
-        <img src={logo} alt="Logo" className="sidebar-logo"/>
-
-        <a href="home">Home</a>
-        <a href="#">Coming soon...</a>
-        <a href="#">Coming soon...</a>
-        <a href="#">Coming soon...</a>
-      </div>
+  return (
+    <div className="sidebar">
+      <img src={logo} alt="Logo" className="sidebar-logo" />
+      <nav className="sidebar-menu">
+        <Link to="/" className="sidebar-item">Home</Link>
+        <Link to="/ai-analysis" className="sidebar-item">AI Analysis</Link>
+      </nav>
+    </div>
   );
-}
-
-export default Sidebar;
+};
