@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Sidebar from "./components/sidebar";
+import {Sidebar} from "./components/sidebar";
 import UploadForm from "./components/UploadForm";
 import AIAnalysis from "./components/AIAnalysis";
 
