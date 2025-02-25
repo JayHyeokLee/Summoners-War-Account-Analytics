@@ -7,11 +7,12 @@ It allows users to **upload JSON files**, calculates **rune efficiency**, and di
 
 ## Features
 - Upload JSON files containing rune data  
-- Process runes and calculate **Current Efficiency** & **Max Efficiency**  
+- Process runes and calculate **Current Efficiency**
 - Sort runes by **Current Efficiency (descending)**  
 - Display results in an **interactive line graph (Chart.js)**  
 - Full **Django REST API** backend  
-- **React frontend** for file upload & visualization  
+- **React frontend** for file upload & visualization
+- **OpenAI API** to provide AI analytics and improvement suggestions
 
 ---
 
