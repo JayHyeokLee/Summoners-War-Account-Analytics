@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import RuneChart from "./RuneChart";
+import { useJsonData } from "../JsonContext";
 
 const UploadForm = () => {
   const [file, setFile] = useState(null);
@@ -8,6 +9,7 @@ const UploadForm = () => {
   const [filteredRunes, setFilteredRunes] = useState([]);  // Filtered rune data
   const [runeSets, setRuneSets] = useState([]);  // Available rune sets
   const [selectedSets, setSelectedSets] = useState([]);  // Selected sets for filtering
+  const { setJsonData } = useJsonData();
 
   const runeSetNames = {
     1: 'Energy',
@@ -65,6 +67,10 @@ const UploadForm = () => {
       const data = response.data;
       setRuneData(data);
       setFilteredRunes(data);
+      setJsonData(data);
+      
+      //debug output
+      console.log("Stored JSON Data:", response.data);
 
       // Extract unique set IDs from the runes
       const uniqueSets = [...new Set(data.map(rune => rune.rune_set))];

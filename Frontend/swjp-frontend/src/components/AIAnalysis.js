@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import RuneChart from "./RuneChart";
+import { useJsonData } from "../JsonContext";
 
 const AIAnalysis = () => {
-  const [runeData, setRuneData] = useState([]);
+  const { jsonData } = useJsonData();
   const [aiInsight, setAIInsight] = useState("");
 
   useEffect(() => {
-    // Fetch rune data when the component loads
-    const fetchRuneData = async () => {
-      try {
-        const response = await axios.get("http://127.0.0.1:8000/api/runes/");
-        setRuneData(response.data);
-      } catch (error) {
-        console.error("Error fetching rune data:", error);
-      }
-    };
+    //debug output
+    console.log("JSON Data in AI Analysis:", jsonData);
 
-    fetchRuneData();
-  }, []);
+    if (jsonData) {
+      console.log("Using Stored JSON Data:", jsonData);
+    } else {
+      console.log("No JSON data found. Please upload a file first.");
+    }
+  }, [jsonData]);
 
   const handleAIAnalysis = async () => {
+    if (!jsonData) {
+      alert("No JSON data available. Please upload a file first.");
+      return;
+    }
+
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/ai-insight/", runeData, {
+      const response = await axios.post("http://127.0.0.1:8000/api/ai-insight/", jsonData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -37,7 +40,7 @@ const AIAnalysis = () => {
   return (
     <div>
       <h2>AI Analysis</h2>
-      <RuneChart runeData={runeData} />
+      <RuneChart runeData={jsonData?.runes || []} />
       <button onClick={handleAIAnalysis} className="ai-button">
         Get AI Insights
       </button>
