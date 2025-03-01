@@ -8,9 +8,6 @@ const AIAnalysis = () => {
   const [aiInsight, setAIInsight] = useState("");
 
   useEffect(() => {
-    //debug output
-    console.log("JSON Data in AI Analysis:", jsonData);
-
     if (jsonData) {
       console.log("Using Stored JSON Data:", jsonData);
     } else {
@@ -47,7 +44,7 @@ const AIAnalysis = () => {
       {aiInsight && (
         <div className="ai-insight">
           <h4>AI Insights:</h4>
-          <p>{aiInsight}</p>
+          <pre>{aiInsight}</pre>
         </div>
       )}
     </div>

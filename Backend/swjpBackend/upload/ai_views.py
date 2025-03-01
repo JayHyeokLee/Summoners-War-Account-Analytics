@@ -40,6 +40,9 @@ def get_ai_insight(request):
 
             # Handle response
             if response.status_code == 200:
+                
+                formatted_response = ai_response.replace("- ", "\n- ")
+
                 ai_response = response.json()["choices"][0]["message"]["content"]
                 return JsonResponse({"insight": ai_response})
             else:
