@@ -1,16 +1,27 @@
 import React from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
-import "./sidebar.css";
+import "../bootstrap.css";
 
 export const Sidebar = () => {
   return (
     <div className="sidebar">
-      <img src={logo} alt="Logo" className="sidebar-logo"/>
-      <nav className="sidebar-menu">
-        <Link to="/" className="sidebar-item">Home</Link>
-        <Link to="/ai-analysis" className="sidebar-item">AI Analysis</Link>
-      </nav>
+      <div class="container-l">
+        <nav class="navbar navbar-dark bg-dark rounded">
+          <a class="navbar-brand" href="#">
+            <img src={logo} alt="Logo" className="sidebar-logo" width="80" height="40"/>
+          </a>
+          <ul class="nav nav-pills">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Rune Chart</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/ai-analysis">AI Analysis</a>
+            </li>
+          </ul>          
+        </nav>
+      </div>
+      
     </div>
   );
 };
