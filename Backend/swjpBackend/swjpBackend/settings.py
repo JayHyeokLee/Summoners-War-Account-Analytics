@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'swjpBackend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'swjp_db',
+        'USER': 'root',
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
