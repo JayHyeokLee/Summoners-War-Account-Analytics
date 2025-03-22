@@ -18,10 +18,24 @@ def upload_json(request):
         runes = data["runes"]
 
         rune_efficiencies = [calculate_efficiency(rune) for rune in runes]
-
-        #print("done processing: ", rune_efficiencies)
-
         sorted_runes_all = sorted(rune_efficiencies, key=lambda r:r["current_efficiency"], reverse=True)
+        sorted_runes_swift = []
+        sorted_runes_vio = []
+        sorted_runes_will = []
+        sorted_runes_despair = []
+        sorted_runes_seal = []
+
+        for rune in sorted_runes_all:
+            if rune["rune_set"] == 3:
+                sorted_runes_swift.append(rune)
+            elif rune["rune_set"] == 10:
+                sorted_runes_despair.append(rune)
+            elif rune["rune_set"] == 13:
+                sorted_runes_vio.append(rune)
+            elif rune["rune_set"] == 15:
+                sorted_runes_will.append(rune)
+            elif rune["rune_set"] == 24:
+                sorted_runes_seal.append(rune)
         
         return Response(sorted_runes_all, status=200)
 
