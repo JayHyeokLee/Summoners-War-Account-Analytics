@@ -27,7 +27,7 @@ def calculate_efficiency(rune):
         pre_ratio += prefix_value / max_prefix
 
     # Efficiency calculations
-    current_efficiency = (sub_ratio*0.8 + pre_ratio*0.2)*70
+    current_efficiency = (sub_ratio*0.8 + pre_ratio*0.2)*80
 
     return {
         "rune_id": rune["rune_id"],
