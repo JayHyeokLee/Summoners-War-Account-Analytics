@@ -4,7 +4,7 @@ import statistics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .process_runes import calculate_efficiency
-from models import UserAVG
+from .models import UserAVG
 
 @api_view(['POST'])
 def upload_json(request):

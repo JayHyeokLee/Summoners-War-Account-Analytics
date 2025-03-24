@@ -6,7 +6,7 @@ class UploadedJSONFile(models.Model):
 
 class UserAVG(models.Model):
     userID = models.IntegerField(primary_key=True)
-    userName = models.CharField()
+    userName = models.CharField(max_length=20)
     globalAVG = models.DecimalField(max_digits=5, decimal_places=2)
     vioAVG = models.DecimalField(max_digits=5, decimal_places=2)
     willAVG = models.DecimalField(max_digits=5, decimal_places=2)
