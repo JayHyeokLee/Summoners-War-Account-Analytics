@@ -17,12 +17,14 @@ def upload_json(request):
     try:
         #loading and parsing json
         data = json.load(file)
-        user_id = data["wizard_info"["wizard_id"]]
-        user_name = data["wizard_info"["wizard_name"]]
         runes = data["runes"]
+        wizard_info = data["wizard_info"]
+        user_id = wizard_info["wizard_id"]
+        user_name = wizard_info["wizard_name"]
 
         rune_efficiencies = [calculate_efficiency(rune) for rune in runes]
         sorted_runes_all = sorted(rune_efficiencies, key=lambda r:r["current_efficiency"], reverse=True)
+        sorted_runes_all_eff = [rune["current_efficiency"] for rune in sorted_runes_all]
         sorted_runes_swift = []
         sorted_runes_vio = []
         sorted_runes_will = []
@@ -56,14 +58,23 @@ def upload_json(request):
                 else:
                     sorted_runes_seal.append(rune["current_efficiency"])
         
-        global_avg = statistics.mean(sorted_runes_all[:500])
+        global_avg = statistics.mean(sorted_runes_all_eff[:500])
         swift_avg = statistics.mean(sorted_runes_swift)
         vio_avg = statistics.mean(sorted_runes_vio)
         will_avg = statistics.mean(sorted_runes_will)
         despair_avg = statistics.mean(sorted_runes_despair)
         seal_avg = statistics.mean(sorted_runes_seal)
 
-        user = UserAVG(userID=user_id, userName=user_name, globalAVG=global_avg, vioAVG=vio_avg, willAVG=will_avg, swiftAVG=swift_avg, desAVG=despair_avg, sealAVG=seal_avg)
+        user = UserAVG(
+            user_id=user_id,
+            user_name=user_name,
+            global_avg=global_avg,
+            vio_avg=vio_avg,
+            will_avg=will_avg,
+            swift_avg=swift_avg,
+            des_avg=despair_avg,
+            seal_avg=seal_avg
+        )
         user.save()
         
         return Response(sorted_runes_all, status=200)
